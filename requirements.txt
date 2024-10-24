@@ -1,12 +1,6 @@
-streamlit
+fastapi
+uvicorn
 pandas
-openpyxl
-matplotlib
-seaborn
-plotly
 scikit-learn
-numpy
 statsmodels
-xlsxwriter
-yfinance
-fpdf
+openpyxl
