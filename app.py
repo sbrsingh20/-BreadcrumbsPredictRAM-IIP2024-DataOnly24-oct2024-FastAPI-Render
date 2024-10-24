@@ -8,6 +8,11 @@ from sklearn.metrics import mean_squared_error
 
 app = FastAPI()
 
+# Define the root route
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Industry and Stock Analysis API!"}
+
 # Load Data function
 def load_data():
     iip_data = pd.read_excel('IIP2024.xlsx')
@@ -78,7 +83,7 @@ def predict_models(industry_name):
     # Prepare Data for Modeling
     leading_indicators = indicators[industry_name]['Leading']
     X = industry_data[leading_indicators].shift(1).dropna()
-    y = iip_data[industry_name].loc[X.index]
+    y = iip_data[industry_name].loc(X.index)
 
     # Linear Regression Model
     reg_model = LinearRegression()
